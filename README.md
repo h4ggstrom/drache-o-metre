@@ -16,4 +16,4 @@ Mobile application for weather forecast
 - Robin DA : robin.de-angelis@etu.cyu.fr
 - Killian T : killian.treuil@etu.cyu.fr
 
-### We are ready to break the meteo game.
+### We are ready to break the weather game.
