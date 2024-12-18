@@ -9,6 +9,8 @@
         <item name="android:windowBackground">@color/backgroundColorNight</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryNight</item>
         <item name="android:textColorSecondary">@color/textColorSecondaryNight</item>
+        <item name="android:statusBarColor">@color/backgroundColorNight</item>
+
     </style>
 
 </resources>

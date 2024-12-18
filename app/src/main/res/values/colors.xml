@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Light Mode Colors -->
-    <color name="colorPrimary">#FF4081</color>
-    <color name="colorPrimaryVariant">#F50057</color>
-    <color name="colorSecondary">#6200EE</color>
-    <color name="backgroundColor">#FFFFFF</color>
+    <color name="colorPrimary">#F7A072</color>
+    <color name="colorPrimaryVariant">#FF9B42</color>
+    <color name="colorSecondary">#00A7E1</color>
+    <color name="backgroundColor">#EDDEA4</color>
     <color name="textColorPrimary">#000000</color>
     <color name="textColorSecondary">#757575</color>
 
     <!-- Night Mode Colors -->
-    <color name="colorPrimaryNight">#FF4081</color>
-    <color name="colorPrimaryVariantNight">#F50057</color>
-    <color name="colorSecondaryNight">#6200EE</color>
-    <color name="backgroundColorNight">#212121</color>
+    <color name="colorPrimaryNight">#F7A072</color>
+    <color name="colorPrimaryVariantNight">#FF9B42</color>
+    <color name="colorSecondaryNight">#00A7E1</color>
+    <color name="backgroundColorNight">#000000</color>
     <color name="textColorPrimaryNight">#FFFFFF</color>
     <color name="textColorSecondaryNight">#BDBDBD</color>
 </resources>
