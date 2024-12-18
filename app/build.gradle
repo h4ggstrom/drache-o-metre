@@ -43,7 +43,8 @@ dependencies {
 
     // added dependencies
     implementation libs.retrofit // retrofit for network interactions (API Calls)
-    implementation libs.converter.gson // retrofit Gson converter.
+    implementation libs.converter.gson
+    implementation libs.activity// retrofit Gson converter.
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
