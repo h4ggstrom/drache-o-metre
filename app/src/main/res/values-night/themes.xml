@@ -1,16 +1,14 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Dracheometre" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+<resources>
+
+    <!-- Base application theme -->
+    <style name="Theme.DracheOMetre" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colors for Night Mode -->
+        <item name="colorPrimary">@color/colorPrimaryNight</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariantNight</item>
+        <item name="colorSecondary">@color/colorSecondaryNight</item>
+        <item name="android:windowBackground">@color/backgroundColorNight</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryNight</item>
+        <item name="android:textColorSecondary">@color/textColorSecondaryNight</item>
     </style>
+
 </resources>
