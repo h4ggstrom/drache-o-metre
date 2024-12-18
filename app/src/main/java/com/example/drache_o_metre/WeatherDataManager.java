@@ -27,7 +27,7 @@ public class WeatherDataManager {
     private Context context;
     private LocationManager locationManager;
     private LocationCallback locationCallback;
-    private static final String API_KEY = "bf2c3a286ba8ccc81df95e187107f1e6";
+    private static final String API_KEY = System.getenv("OPENWEATHER_API_KEY");
     private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
     public WeatherDataManager(Context context, LocationCallback locationCallback) {
