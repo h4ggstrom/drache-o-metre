@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-
+    // base dependencies
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout
@@ -40,6 +40,11 @@ dependencies {
     implementation libs.lifecycle.viewmodel.ktx
     implementation libs.navigation.fragment
     implementation libs.navigation.ui
+
+    // added dependencies
+    implementation libs.retrofit // retrofit for network interactions (API Calls)
+    implementation libs.converter.gson // retrofit Gson converter.
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
