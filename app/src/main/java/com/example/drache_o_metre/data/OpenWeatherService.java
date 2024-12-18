@@ -1,4 +1,4 @@
-package com.example.drache_o_metre;
+package com.example.drache_o_metre.data;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

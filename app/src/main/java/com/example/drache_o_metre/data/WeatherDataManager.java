@@ -1,4 +1,4 @@
-package com.example.drache_o_metre;
+package com.example.drache_o_metre.data;
 
 import android.content.Context;
 import android.location.Location;

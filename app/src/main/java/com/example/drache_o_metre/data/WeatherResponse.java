@@ -1,4 +1,4 @@
-package com.example.drache_o_metre;
+package com.example.drache_o_metre.data;
 
 /**
  * WeatherResponse is a class that represents the response from the OpenWeatherMap API.

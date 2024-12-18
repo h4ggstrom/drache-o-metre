@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:layout_margin="8dp">
+
+    <!-- Hour -->
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:00"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubik_medium" />
+
+    <!-- Temperature -->
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25°C"
+        android:textSize="18sp"
+        android:textColor="?attr/textColorAlertDialogListItem"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubik_regular" />
+
+    <!-- weather icon -->
+    <ImageView
+        android:id="@+id/weatherIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/sunny"
+        android:contentDescription="@string/weather_icon" />
+
+</LinearLayout>

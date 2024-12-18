@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <!-- Day name display -->
+    <TextView
+        android:id="@+id/dayName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Lundi"
+        android:textSize="18sp"
+        android:textColor="?attr/colorPrimary"
+        android:fontFamily="@font/rubik_regular" />
+
+    <!-- forecast icon -->
+    <ImageView
+        android:id="@+id/weatherIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/weather_icon"
+        android:src="@drawable/sunny" />
+
+    <!-- PoP -->
+    <TextView
+        android:id="@+id/precipitationProbability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20%"
+        android:textSize="16sp"
+        android:textColor="?attr/colorSecondary"
+        android:fontFamily="@font/rubik_regular" />
+</LinearLayout>
