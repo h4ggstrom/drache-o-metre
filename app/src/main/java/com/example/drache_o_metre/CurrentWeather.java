@@ -1,6 +1,10 @@
 package com.example.drache_o_metre;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +42,19 @@ public class CurrentWeather extends AppCompatActivity {
         dailyForecastRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         dailyForecastAdapter = new DailyForecastAdapter(dailyForecastList);
         dailyForecastRecyclerView.setAdapter(dailyForecastAdapter);
+
+        // Récupérer le bouton "Details"
+        Button detailsButton = findViewById(R.id.detailsButton);
+
+        // Définir un OnClickListener pour lancer l'activité de prévisions hebdomadaires
+        detailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Créer un Intent pour lancer WeeklyForecastActivity
+                Intent intent = new Intent(CurrentWeather.this, Weekly_Forecast.class);
+                startActivity(intent);  // Lancer l'activité
+            }
+        });
 
         // Récupérer les données météo (ici, avec des exemples statiques)
         fetchHourlyForecastData();

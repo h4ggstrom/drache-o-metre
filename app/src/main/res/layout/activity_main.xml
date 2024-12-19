@@ -1,74 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".CurrentWeather">
 
-    <!-- App title -->
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="36sp"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:fontFamily="@font/rubik_bold_italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <!-- Current weather conditions -->
-    <LinearLayout
-        android:id="@+id/currentWeatherLayout"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:fontFamily="@font/rubik_variable_font_wght"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appTitle">
-
+        <!-- App title -->
         <TextView
-            android:id="@+id/currentTemperature"
+            android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20°C"
-            android:textSize="30sp"
-            android:fontFamily="@font/rubik_semi_bold"
-            android:gravity="center" />
+            android:text="@string/app_name"
+            android:textSize="36sp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:fontFamily="@font/rubik_bold_italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/currentCondition"
+        <!-- Current weather conditions -->
+        <LinearLayout
+            android:id="@+id/currentWeatherLayout"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Partly Cloudy"
+            android:gravity="center"
             android:fontFamily="@font/rubik_variable_font_wght"
-            android:textSize="18sp"
-            android:gravity="center" />
-    </LinearLayout>
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appTitle">
 
-    <!-- Next hours forecast (horizontal carousel) -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hourlyForecastRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/currentWeatherLayout" />
+            <TextView
+                android:id="@+id/currentTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20°C"
+                android:textSize="30sp"
+                android:fontFamily="@font/rubik_semi_bold"
+                android:gravity="center" />
 
-    <!-- Scrollable container for the vertical carousel -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/hourlyForecastRecyclerView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:fillViewport="true">
+            <TextView
+                android:id="@+id/currentCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Partly Cloudy"
+                android:fontFamily="@font/rubik_variable_font_wght"
+                android:textSize="18sp"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Next hours forecast (horizontal carousel) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hourlyForecastRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currentWeatherLayout" />
 
         <!-- Vertical carousel (weekly forecast) -->
         <androidx.recyclerview.widget.RecyclerView
@@ -76,7 +73,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
-            android:paddingBottom="32dp" />
-    </androidx.core.widget.NestedScrollView>
+            android:layout_marginTop="16dp"
+            android:paddingBottom="32dp"
+            app:layout_constraintTop_toBottomOf="@id/hourlyForecastRecyclerView"
+            app:layout_constraintBottom_toTopOf="@id/detailsButton" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Details button to open Weekly_Forecast activity -->
+        <Button
+            android:id="@+id/detailsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/weeklyForecastRecyclerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
