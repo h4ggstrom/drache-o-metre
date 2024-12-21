@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drache_o_metre.R;
-import com.example.drache_o_metre.data.DailyForecast;
+import com.example.drache_o_metre.data.forecast_objects.DailyForecast;
 
 import java.util.List;
 

@@ -28,7 +28,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/rubik_regular" />
 
-    <!-- weather icon -->
+    <!-- weatherIcon icon -->
     <ImageView
         android:id="@+id/weatherIcon"
         android:layout_width="40dp"

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drache_o_metre.R;
-import com.example.drache_o_metre.data.HourlyForecast;
+import com.example.drache_o_metre.data.forecast_objects.HourlyForecast;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.drache_o_metre.data;
+package com.example.drache_o_metre.data.forecast_objects;
 
 /**
  * HourlyForecast is a class that represents a forecast for a specific time.

@@ -25,19 +25,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Current weather conditions -->
+        <!-- Current weatherIcon conditions -->
         <LinearLayout
             android:id="@+id/currentWeatherLayout"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="@font/rubik_variable_font_wght"
             android:layout_marginTop="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appTitle">
 
+            <!-- Current Temperature -->
             <TextView
                 android:id="@+id/currentTemperature"
                 android:layout_width="wrap_content"
@@ -47,14 +47,14 @@
                 android:fontFamily="@font/rubik_semi_bold"
                 android:gravity="center" />
 
-            <TextView
-                android:id="@+id/currentCondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Partly Cloudy"
-                android:fontFamily="@font/rubik_variable_font_wght"
-                android:textSize="18sp"
-                android:gravity="center" />
+            <!-- Current Weather Icon -->
+            <ImageView
+                android:id="@+id/currentConditionIcon"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:contentDescription="@string/weather_icon"
+                android:src="@drawable/few_clouds"
+                android:layout_marginTop="0dp" />
         </LinearLayout>
 
         <!-- Next hours forecast (horizontal carousel) -->

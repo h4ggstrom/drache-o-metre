@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp"
+    android:padding="12dp"
     android:gravity="center_vertical">
 
     <!-- Day name display -->
@@ -30,10 +30,11 @@
     <!-- PoP -->
     <TextView
         android:id="@+id/precipitationProbability"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:text="20%"
         android:textSize="16sp"
+        android:gravity="center"
         android:textColor="?attr/colorSecondary"
         android:fontFamily="@font/rubik_regular" />
 </LinearLayout>

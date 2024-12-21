@@ -1,11 +1,11 @@
-package com.example.drache_o_metre.data;
+package com.example.drache_o_metre.data.forecast_objects;
 
 public class DailyForecast {
     private final String dayName;
     private final int weatherIcon;
-    private final int precipitationProbability;
+    private final double precipitationProbability;
 
-    public DailyForecast(String dayName, int weatherIcon, int precipitationProbability) {
+    public DailyForecast(String dayName, int weatherIcon, double precipitationProbability) {
         this.dayName = dayName;
         this.weatherIcon = weatherIcon;
         this.precipitationProbability = precipitationProbability;
@@ -19,7 +19,7 @@ public class DailyForecast {
         return weatherIcon;
     }
 
-    public int getPrecipitationProbability() {
+    public double getPrecipitationProbability() {
         return precipitationProbability;
     }
 }
