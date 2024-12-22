@@ -16,7 +16,7 @@
         android:theme="@style/Theme.DracheOMetre"
         tools:targetApi="31">
         <activity
-            android:name=".Weekly_Forecast"
+            android:name=".Detailed_Forecast"
             android:exported="false" />
         <activity
             android:name=".CurrentWeather"

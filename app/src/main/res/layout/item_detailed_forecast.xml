@@ -1,0 +1,119 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="0dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Nom du jour -->
+    <TextView
+        android:id="@+id/dayNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday"
+        android:gravity="center_vertical"
+        android:fontFamily="@font/rubik_bold"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Probabilité de précipitations -->
+    <TextView
+        android:id="@+id/popTextView"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:text="100.0%"
+        android:fontFamily="@font/rubik_regular"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textColor="?attr/colorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Icône météo du matin -->
+    <ImageView
+        android:id="@+id/morningWeatherIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/sunny"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/weatherIconSeparator"
+        android:layout_marginEnd="0dp" />
+
+    <!-- Séparateur (slash) entre icônes météo -->
+    <TextView
+        android:id="@+id/weatherIconSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:fontFamily="@font/rubik_regular"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textAppearance="?attr/textAppearanceBody1"
+        app:layout_constraintEnd_toStartOf="@id/afternoonWeatherIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="0dp" />
+
+    <!-- Icône météo de l'après-midi -->
+    <ImageView
+        android:id="@+id/afternoonWeatherIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/sunny"
+        app:layout_constraintEnd_toStartOf="@id/morningTemperatureTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="24dp" />
+
+    <!-- Température du matin -->
+    <TextView
+        android:id="@+id/morningTemperatureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="10°C"
+        android:fontFamily="@font/rubik_regular"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textAppearance="?attr/textAppearanceBody1"
+        app:layout_constraintEnd_toStartOf="@id/temperatureSeparator"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="4dp" />
+
+    <!-- Séparateur (slash) entre températures -->
+    <TextView
+        android:id="@+id/temperatureSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:gravity="center"
+        android:fontFamily="@font/rubik_regular"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textAppearance="?attr/textAppearanceBody1"
+        app:layout_constraintEnd_toStartOf="@id/afternoonTemperatureTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="4dp" />
+
+    <!-- Température de l'après-midi -->
+    <TextView
+        android:id="@+id/afternoonTemperatureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18°C"
+        android:gravity="center"
+        android:fontFamily="@font/rubik_regular"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textAppearance="?attr/textAppearanceBody1"
+        app:layout_constraintEnd_toStartOf="@id/popTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,9 +30,9 @@
     <!-- PoP -->
     <TextView
         android:id="@+id/precipitationProbability"
-        android:layout_width="40dp"
+        android:layout_width="49dp"
         android:layout_height="wrap_content"
-        android:text="20%"
+        android:text="88.8%"
         android:textSize="16sp"
         android:gravity="center"
         android:textColor="?attr/colorSecondary"
