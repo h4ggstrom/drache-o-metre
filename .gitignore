@@ -33,4 +33,4 @@ google-services.json
 *.hprof
 
 # ApiKey file
-./com/example/drache_o_metre/data/interact/responses/ApiKey.java
+.app/src/main/java/com/example/drache_o_metre/data/interact/responses/ApiKey.java
