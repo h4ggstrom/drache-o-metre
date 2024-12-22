@@ -31,3 +31,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# ApiKey file
+./com/example/drache_o_metre/data/interact/responses/ApiKey.java
