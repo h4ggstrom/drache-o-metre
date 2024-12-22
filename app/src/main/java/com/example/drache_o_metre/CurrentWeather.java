@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,7 @@ import com.example.drache_o_metre.data.adapters.DailyForecastAdapter;
 import com.example.drache_o_metre.data.adapters.HourlyForecastAdapter;
 import com.example.drache_o_metre.data.forecast_objects.DailyForecast;
 import com.example.drache_o_metre.data.forecast_objects.HourlyForecast;
+import com.example.drache_o_metre.data.interact.CurrentWeatherCallback;
 import com.example.drache_o_metre.data.interact.WeatherCallback;
 import com.example.drache_o_metre.data.interact.WeatherDataManager;
 
@@ -64,6 +67,7 @@ public class CurrentWeather extends AppCompatActivity {
         dailyForecastAdapter = new DailyForecastAdapter(dailyForecastList);
         dailyForecastRecyclerView.setAdapter(dailyForecastAdapter);
 
+
         Button detailsButton = findViewById(R.id.detailsButton);
         detailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +88,7 @@ public class CurrentWeather extends AppCompatActivity {
 
         // Demander la position de l'utilisateur
         requestLocationPermission();
+        fetchDailyForecastData();
     }
 
     // Demander la permission d'accès à la localisation
@@ -115,7 +120,8 @@ public class CurrentWeather extends AppCompatActivity {
             public void onLocationChanged(@NonNull Location location) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
-                fetchHourlyForecastData(latitude, longitude);  // Utiliser la position pour récupérer les prévisions horaires
+                fetchHourlyForecastData(latitude, longitude);
+                fetchCurrentWeatherData(latitude, longitude);
             }
 
             @Override
@@ -144,6 +150,26 @@ public class CurrentWeather extends AppCompatActivity {
                 hourlyForecastList.addAll(hourlyForecasts);
                 hourlyForecastAdapter.notifyDataSetChanged();
             }
+            @Override
+            public void onFailure(String errorMessage) {
+                Toast.makeText(CurrentWeather.this, errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void fetchCurrentWeatherData(double latitude, double longitude) {
+        WeatherDataManager weatherDataManager = new WeatherDataManager();
+        weatherDataManager.getCurrentWeather(latitude, longitude, new CurrentWeatherCallback() {
+            @Override
+            public void onSuccess(String cityName, String temperature, String icon) {
+                TextView appTitle = findViewById(R.id.appTitle);
+                TextView currentTemperature = findViewById(R.id.currentTemperature);
+                ImageView currentConditionIcon = findViewById(R.id.currentConditionIcon);
+                appTitle.setText(cityName);
+                currentTemperature.setText(temperature);
+                currentConditionIcon.setImageResource(getResources().getIdentifier(icon, "drawable", getPackageName()));
+            }
+
             @Override
             public void onFailure(String errorMessage) {
                 Toast.makeText(CurrentWeather.this, errorMessage, Toast.LENGTH_SHORT).show();

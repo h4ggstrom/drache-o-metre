@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface WeatherCallback {
     void onSuccess(List<HourlyForecast> forecasts);
-
     void onFailure(String errorMessage);
 }
 

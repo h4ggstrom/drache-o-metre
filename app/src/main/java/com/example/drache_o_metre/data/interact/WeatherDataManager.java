@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.drache_o_metre.data.forecast_objects.HourlyForecast;
 import com.example.drache_o_metre.data.interact.responses.ApiKey;
+import com.example.drache_o_metre.data.interact.responses.CurrentWeatherResponse;
 import com.example.drache_o_metre.data.interact.responses.HourlyWeatherResponse;
 
 import retrofit2.Call;
@@ -57,7 +58,7 @@ public class WeatherDataManager {
 
                         // Convertir le timestamp en heure
                         String time = convertTimestampToTime(hourly.dt);
-                        String temperature = String.valueOf(Math.round(hourly.main.temp - 273.15)) + "°C";
+                        String temperature = Math.round(hourly.main.temp - 273.15) + "°C";
                         String icon = getWeatherIconResource(hourly.weather.get(0).icon);  // Assumons qu'il y a toujours au moins un élément
 
 
@@ -71,10 +72,34 @@ public class WeatherDataManager {
                 }
             }
 
-
-
             @Override
             public void onFailure(Call<HourlyWeatherResponse> call, Throwable t) {
+                callback.onFailure("Erreur de connexion : " + t.getMessage());
+            }
+        });
+    }
+
+    public void getCurrentWeather(double latitude, double longitude, final CurrentWeatherCallback callback) {
+        Call<CurrentWeatherResponse> call = openWeatherApi.getCurrentWeather(latitude, longitude, apiKey);
+        Log.d("API Request", "URL: " + call.request().url().toString());
+        call.enqueue(new Callback<CurrentWeatherResponse>() {
+            @Override
+            public void onResponse(Call<CurrentWeatherResponse> call, Response<CurrentWeatherResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    CurrentWeatherResponse currentWeather = response.body();
+
+                    String cityName = currentWeather.getCityName();
+                    String temperature = Math.round(currentWeather.getTemperature()) + "°C";
+                    String icon = getWeatherIconResource(currentWeather.getIconCode());
+
+                    callback.onSuccess(cityName, temperature, icon);
+                } else {
+                    callback.onFailure("Erreur dans la réponse de l'API");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CurrentWeatherResponse> call, Throwable t) {
                 callback.onFailure("Erreur de connexion : " + t.getMessage());
             }
         });

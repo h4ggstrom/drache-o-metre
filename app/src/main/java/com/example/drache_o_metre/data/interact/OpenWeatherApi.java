@@ -26,16 +26,15 @@ public interface OpenWeatherApi {
             @Query("appid") String apiKey,
             @Query("units") String units
     );
-
+*/
     // API pour la météo actuelle
     @GET("data/2.5/weather")
     Call<CurrentWeatherResponse> getCurrentWeather(
             @Query("lat") double latitude,
             @Query("lon") double longitude,
-            @Query("appid") String apiKey,
-            @Query("units") String units
+            @Query("appid") String apiKey
+
     );
- */
 }
 
 
