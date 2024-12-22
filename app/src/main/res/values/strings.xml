@@ -4,4 +4,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="weather_icon">Weather icon</string>
+    <string-array name="freqRefresh">
+        <item>High</item>
+        <item>Balanced</item>
+        <item>Low</item>
+    </string-array>
 </resources>
