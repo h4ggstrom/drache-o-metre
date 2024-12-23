@@ -1,7 +1,7 @@
 # Drache-o-metre
 
 ## Overview
-Drache-o-metre provides accurate and up-to-date weather forecasts based on the user's current GPS location. Built with Android Studio, it uses the OpenWeather API to deliver detailed weather information and customizable settings.
+Drache-o-metre provides accurate and up-to-date weather forecasts based on the user's current GPS location. Built with Android Studio, it uses the OpenWeather API to deliver detailed weather information and customizable settings. Drache-o-metre is a project within our mobile computing minor of our 3rd year of informatic licence.
 
 ## Activities
 1. **Current Weather (MainActivity)**
