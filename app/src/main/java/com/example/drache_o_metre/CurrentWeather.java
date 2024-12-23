@@ -26,8 +26,9 @@ import com.example.drache_o_metre.data.adapters.DailyForecastAdapter;
 import com.example.drache_o_metre.data.adapters.HourlyForecastAdapter;
 import com.example.drache_o_metre.data.forecast_objects.DailyForecast;
 import com.example.drache_o_metre.data.forecast_objects.HourlyForecast;
-import com.example.drache_o_metre.data.interact.CurrentWeatherCallback;
-import com.example.drache_o_metre.data.interact.WeatherCallback;
+import com.example.drache_o_metre.data.interact.callback.CurrentWeatherCallback;
+import com.example.drache_o_metre.data.interact.callback.DailyWeatherCallback;
+import com.example.drache_o_metre.data.interact.callback.HourlyWeatherCallback;
 import com.example.drache_o_metre.data.interact.WeatherDataManager;
 
 import java.util.ArrayList;
@@ -72,10 +73,35 @@ public class CurrentWeather extends AppCompatActivity {
         detailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CurrentWeather.this, Detailed_Forecast.class);
-                startActivity(intent);
+                // Vérifier si les coordonnées sont disponibles
+                if (locationManager != null && locationListener != null) {
+                    // Obtenez la dernière localisation
+                    try {
+                        Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        if (lastKnownLocation != null) {
+                            double latitude = lastKnownLocation.getLatitude();
+                            double longitude = lastKnownLocation.getLongitude();
+
+                            // Crée l'intent pour démarrer l'activité Detailed_Forecast
+                            Intent intent = new Intent(CurrentWeather.this, Detailed_Forecast.class);
+
+                            // Passe la latitude et la longitude dans l'intent
+                            intent.putExtra("LATITUDE", latitude);
+                            intent.putExtra("LONGITUDE", longitude);
+
+                            // Lance l'activité
+                            startActivity(intent);
+                        } else {
+                            // Gérer le cas où la localisation n'est pas disponible
+                            Toast.makeText(CurrentWeather.this, "Localisation non disponible", Toast.LENGTH_SHORT).show();
+                        }
+                    }catch (SecurityException e){
+                        return;
+                    }
+                }
             }
         });
+
 
         ImageButton settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +114,6 @@ public class CurrentWeather extends AppCompatActivity {
 
         // Demander la position de l'utilisateur
         requestLocationPermission();
-        fetchDailyForecastData();
     }
 
     // Demander la permission d'accès à la localisation
@@ -122,6 +147,7 @@ public class CurrentWeather extends AppCompatActivity {
                 double longitude = location.getLongitude();
                 fetchHourlyForecastData(latitude, longitude);
                 fetchCurrentWeatherData(latitude, longitude);
+                fetchDailyForecastData(latitude, longitude);
             }
 
             @Override
@@ -143,7 +169,7 @@ public class CurrentWeather extends AppCompatActivity {
     // Modifié pour utiliser l'API avec la localisation
     private void fetchHourlyForecastData(double latitude, double longitude) {
         WeatherDataManager weatherDataManager = new WeatherDataManager();
-        weatherDataManager.getHourlyForecast(latitude, longitude, new WeatherCallback() {
+        weatherDataManager.getHourlyForecast(latitude, longitude, new HourlyWeatherCallback() {
             @Override
             public void onSuccess(List<HourlyForecast> hourlyForecasts) {
                 hourlyForecastList.clear();
@@ -178,17 +204,24 @@ public class CurrentWeather extends AppCompatActivity {
     }
 
     // Exemple de données fictives pour les prévisions journalières
-    private void fetchDailyForecastData() {
-        dailyForecastList.add(new DailyForecast("Lundi", R.drawable.sunny, 20));
-        dailyForecastList.add(new DailyForecast("Mardi", R.drawable.rain, 80));
-        dailyForecastList.add(new DailyForecast("Mercredi", R.drawable.snow, 10));
-        dailyForecastList.add(new DailyForecast("Jeudi", R.drawable.shower_rain, 50));
-        dailyForecastList.add(new DailyForecast("Vendredi", R.drawable.few_clouds, 15));
-        dailyForecastList.add(new DailyForecast("Samedi", R.drawable.mist, 30));
-        dailyForecastList.add(new DailyForecast("Dimanche", R.drawable.thunderstorm, 70));
+    private void fetchDailyForecastData(double latitude, double longitude) {
+        WeatherDataManager weatherDataManager = new WeatherDataManager();
+        weatherDataManager.getDailyWeather(latitude, longitude, 7, new DailyWeatherCallback() {
+            @Override
+            public void onSuccess(List<DailyForecast> dailyForecasts) {
+                dailyForecastList.clear();
+                dailyForecastList.addAll(dailyForecasts);
+                dailyForecastAdapter.notifyDataSetChanged();
+            }
 
-        dailyForecastAdapter.notifyDataSetChanged();
+            @Override
+            public void onFailure(String errorMessage) {
+                Toast.makeText(CurrentWeather.this, errorMessage, Toast.LENGTH_SHORT).show();
+                Log.e("DailyWeatherCallback", "onFailure: " + errorMessage);
+            }
+        });
     }
+
 
     @Override
     protected void onPause() {

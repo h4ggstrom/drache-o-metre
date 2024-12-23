@@ -1,5 +1,6 @@
 package com.example.drache_o_metre.data.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,12 @@ public class DailyForecastAdapter extends RecyclerView.Adapter<DailyForecastAdap
     public void onBindViewHolder(@NonNull DailyViewHolder holder, int position) {
         DailyForecast forecast = dailyForecastList.get(position);
         holder.dayName.setText(forecast.getDayName());
-        holder.precipitationProbability.setText(forecast.getPrecipitationProbability() + "%");
-        holder.weatherIcon.setImageResource(forecast.getWeatherIcon());
+        String pop = String.valueOf(forecast.getPrecipitationProbability()) + "%";
+        holder.precipitationProbability.setText(pop);
+        String iconName = forecast.getWeatherIcon();
+        Log.d("IconName", "onBindViewHolder: " + iconName);
+        int iconResId = holder.itemView.getContext().getResources().getIdentifier(iconName, "drawable", holder.itemView.getContext().getPackageName());
+        holder.weatherIcon.setImageResource(iconResId);
     }
 
     @Override

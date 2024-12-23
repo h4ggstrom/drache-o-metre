@@ -34,8 +34,13 @@ public class DetailedForecastAdapter extends RecyclerView.Adapter<DetailedForeca
         DetailedForecast forecast = forecastList.get(position);
 
         holder.dayNameTextView.setText(forecast.getDayName());
-        holder.morningIconImageView.setImageResource(forecast.getMorningIconResId());
-        holder.afternoonIconImageView.setImageResource(forecast.getAfternoonIconResId());
+        String mornIcon = forecast.getMorningIconResId();
+        int mornIconId = holder.itemView.getContext().getResources().getIdentifier(mornIcon, "drawable", holder.itemView.getContext().getPackageName());
+        holder.morningIconImageView.setImageResource(mornIconId);
+
+        String afternoonIcon = forecast.getAfternoonIconResId();
+        int afternoonIconId = holder.itemView.getContext().getResources().getIdentifier(afternoonIcon, "drawable", holder.itemView.getContext().getPackageName());
+        holder.afternoonIconImageView.setImageResource(afternoonIconId);
         holder.morningTempTextView.setText(forecast.getMorningTemp());
         holder.afternoonTempTextView.setText(forecast.getAfternoonTemp());
         holder.popTextView.setText(forecast.getPop());

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Light Mode Colors -->
-    <color name="colorPrimary">#F7A072</color>
+    <color name="colorPrimary">#FFA072</color>
     <color name="colorPrimaryVariant">#FF9B42</color>
     <color name="colorSecondary">#00A7E1</color>
     <color name="backgroundColor">#EDDEA4</color>

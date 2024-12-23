@@ -2,13 +2,13 @@ package com.example.drache_o_metre.data.forecast_objects;
 
 public class DetailedForecast {
     private String dayName;
-    private int morningIconResId;
-    private int afternoonIconResId;
+    private String morningIconResId;
+    private String afternoonIconResId;
     private String morningTemp;
     private String afternoonTemp;
     private String pop;
 
-    public DetailedForecast(String dayName, int morningIconResId, int afternoonIconResId, String morningTemp, String afternoonTemp, String pop) {
+    public DetailedForecast(String dayName, String morningIconResId, String afternoonIconResId, String morningTemp, String afternoonTemp, String pop) {
         this.dayName = dayName;
         this.morningIconResId = morningIconResId;
         this.afternoonIconResId = afternoonIconResId;
@@ -25,19 +25,19 @@ public class DetailedForecast {
         this.dayName = dayName;
     }
 
-    public int getMorningIconResId() {
+    public String getMorningIconResId() {
         return morningIconResId;
     }
 
-    public void setMorningIconResId(int morningIconResId) {
+    public void setMorningIconResId(String morningIconResId) {
         this.morningIconResId = morningIconResId;
     }
 
-    public int getAfternoonIconResId() {
+    public String getAfternoonIconResId() {
         return afternoonIconResId;
     }
 
-    public void setAfternoonIconResId(int afternoonIconResId) {
+    public void setAfternoonIconResId(String afternoonIconResId) {
         this.afternoonIconResId = afternoonIconResId;
     }
 

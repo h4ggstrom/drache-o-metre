@@ -1,4 +1,4 @@
-package com.example.drache_o_metre.data.interact;
+package com.example.drache_o_metre.data.interact.callback;
 
 public interface CurrentWeatherCallback {
 
