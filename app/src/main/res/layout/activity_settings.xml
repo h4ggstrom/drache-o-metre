@@ -114,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/aboutUs"
@@ -143,41 +143,61 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_regular"/>
 
-            <TextView
-                android:text="GitHub"
-                android:layout_width="wrap_content"
+            <TableLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:paddingTop="16dp"
-                android:fontFamily="@font/rubik_regular"/>
-            <TextView
-                android:text="https://github.com/h4ggstrom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:fontFamily="@font/rubik_regular"/>
+                android:stretchColumns="1"
+                android:paddingTop="0dp">
+                <TableRow>
 
-            <TextView
-                android:text="https://github.com/mrktttt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:fontFamily="@font/rubik_regular"/>
+                    <TextView
+                        android:text="Authors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:fontFamily="@font/rubik_regular"
+                        android:paddingTop="16dp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:text="Authors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:paddingTop="16dp"
-                android:fontFamily="@font/rubik_regular"/>
+                    <TextView
+                        android:text="GitHub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:textStyle="bold"
+                        android:paddingTop="16dp"
+                        android:fontFamily="@font/rubik_regular" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="Robin DA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_regular" />
+                    <TextView
+                        android:text="https://github.com/h4ggstrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:autoLink="web"
+                        android:fontFamily="@font/rubik_regular" />
+                </TableRow>
 
-            <TextView
-                android:text="Robin DA, Killian T"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik_regular"/>
-
+                <TableRow>
+                    <TextView
+                        android:text="Killian T"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_regular" />
+                    <TextView
+                        android:text="https://github.com/mrktttt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:autoLink="web"
+                        android:fontFamily="@font/rubik_regular" />
+                </TableRow>
+            </TableLayout>
             <Button
                 android:id="@+id/moreButton"
                 android:text="More"
