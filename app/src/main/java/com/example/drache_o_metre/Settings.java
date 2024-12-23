@@ -1,6 +1,7 @@
 package com.example.drache_o_metre;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,16 +25,15 @@ public class Settings extends AppCompatActivity {
 
     private Switch notificationSwitch;
     private Spinner freqSpinner;
-    private Button back;
-    private Button moreButton;
-    private Button applySpinner;
+    private Button back, moreButton, applySpinner;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        // Spinner
         // Initialisation du spinner pour choisir la fréquence d'actualisation
-        Spinner freqSpinner = findViewById(R.id.freqSpinner);
+        freqSpinner = findViewById(R.id.freqSpinner);
         //freqSpinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this); // Pour récupérer la donnée choisie dans le spinner
 
         // Insertion des valeurs du tableau freqRefresh dans le spinner
@@ -45,33 +45,36 @@ public class Settings extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         freqSpinner.setAdapter(adapter);
 
-        // Pour afficher l'élément en sharedPreference au devant
-        int pos = getFreqSpinnerPref();
-        freqSpinner.setSelection(pos);
 
+        // Switch
+        // Initialisation de la switch pour les préférences de notification
+        notificationSwitch = findViewById(R.id.notificationSwitch);
+
+
+        // Initialisations boutons
         //Initialisation du bouton apply pour le spinner
         applySpinner = findViewById(R.id.applySpinner);
 
-        applySpinner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String spinnerString = (String)freqSpinner.getSelectedItem();
+        // Initialisation du bouton back pour revenir à la main activity.
+        back = findViewById(R.id.backMain);
 
-                SharedPreferences sharedPref = getSharedPreferences("freqSpinner", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("freqSpinner", spinnerString);
-                editor.apply();
-            }
-        });
+        // Ajout du bouton pour les informations supplémentaires.
+        moreButton = findViewById(R.id.moreButton);
 
-        //Initialisation de la switch pour les préférences de notification
-        Switch notificationSwitch = findViewById(R.id.notificationSwitch);
 
-        // Si la préférence est oui, elle coche le switch.
+        // Vérification de l'état de la switch et du spinner.
+        // Si la préférence est true, elle coche le switch.
         if(isMeteoNotifSelected()) {
             notificationSwitch.setChecked(true);
         }
 
+        // Pour afficher l'élément stocké dans sharedPreference au devant du spinner
+        int pos = getFreqSpinnerPref();
+        freqSpinner.setSelection(pos);
+
+
+        // Mise en place des onClickListener
+        //notificationswitch
         notificationSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,8 +89,18 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        // Initialisation du bouton back pour revenir à la main activity.
-        Button back = findViewById(R.id.backMain);
+        //applySpinner
+        applySpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String spinnerString = (String)freqSpinner.getSelectedItem();
+
+                SharedPreferences sharedPref = getSharedPreferences("freqSpinner", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("freqSpinner", spinnerString);
+                editor.apply();
+            }
+        });
 
         // Ajout d'un action listener pour venir à la main activity.
         back.setOnClickListener(new View.OnClickListener() {
@@ -98,8 +111,7 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        // Ajout du bouton pour les informations supplémentaires.
-        Button moreButton = findViewById(R.id.moreButton);
+        // Listener bouton more
         moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,11 +119,10 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     public boolean isMeteoNotifSelected(){
-        // renvoie la val de météonotif en booleen
+        // Renvoie la val de préférence de meteoNotification via un Booléen
         SharedPreferences sharedPref = getSharedPreferences("meteoNotification", MODE_PRIVATE);
         String tmp = sharedPref.getString("meteoNotification", "");
         if(tmp.equals("true")) {
@@ -121,6 +132,7 @@ public class Settings extends AppCompatActivity {
     }
 
     public int getFreqSpinnerPref() {
+        // Renvoie la position de l'élément stocké dans sharedPreference
         SharedPreferences sharedPref = getSharedPreferences("freqSpinner", MODE_PRIVATE);
         String tmp = sharedPref.getString("freqSpinner", "");
         if(tmp.equals("High")){
