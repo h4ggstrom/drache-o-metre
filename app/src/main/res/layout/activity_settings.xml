@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Settings">
 
+
     <!-- Titre -->
     <TextView
         android:id="@+id/titleSettings"
@@ -15,7 +16,7 @@
         android:fontFamily="@font/rubik_extra_bold"
         android:textAppearance="?attr/textAppearanceHeadline6"
         android:layout_marginBottom="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -29,7 +30,7 @@
         android:fontFamily="@font/rubik_regular"
         android:textSize="18sp"
         android:textColor="?attr/colorPrimary"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:layout_marginStart="15dp"
         app:layout_constraintTop_toBottomOf="@id/titleSettings"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,14 +39,23 @@
 
     <Spinner
         android:id="@+id/freqSpinner"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_width="match_parent"
         android:layout_marginTop="8dp"
         android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="105dp"
         android:fontFamily="@font/rubik_regular"
         android:entries="@array/freqRefresh"
         app:layout_constraintTop_toBottomOf="@id/freqSpinnerTextView" />
+
+    <Button
+        android:id="@+id/applySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        app:layout_constraintStart_toEndOf="@id/freqSpinner"
+        app:layout_constraintTop_toBottomOf="@id/freqSpinnerTextView"
+        android:layout_marginTop="8dp"/>
 
     <!-- Préfences de notification pour la météo -->
     <TextView
@@ -56,7 +66,7 @@
         android:fontFamily="@font/rubik_regular"
         android:textSize="18sp"
         android:textColor="?attr/colorPrimary"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="15dp"
         app:layout_constraintTop_toBottomOf="@id/freqSpinner"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,13 +75,14 @@
     <Switch
         android:id="@+id/notificationSwitch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="Meteo notifications "
         android:fontFamily="@font/rubik_regular"
         android:showText="true"
         android:layout_marginTop="8dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+
         app:layout_constraintTop_toBottomOf="@id/notificationTextView"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -90,17 +101,90 @@
     <!-- Info -->
     <TextView
         android:id="@+id/aboutUs"
-        android:text="About drache-o-metre"
+        android:text="About drache-o-mètre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik_regular"
         android:textSize="18sp"
         android:textColor="?attr/colorPrimary"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="15dp"
         app:layout_constraintTop_toBottomOf="@id/notificationSwitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/aboutUs"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            >
+
+            <TextView
+                android:text="Version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/aboutUs"
+                android:fontFamily="@font/rubik_regular"/>
+            <TextView
+                android:text="1.0.0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_regular"/>
+
+            <TextView
+                android:text="GitHub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingTop="16dp"
+                android:fontFamily="@font/rubik_regular"/>
+            <TextView
+                android:text="https://github.com/h4ggstrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:fontFamily="@font/rubik_regular"/>
+
+            <TextView
+                android:text="https://github.com/mrktttt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:fontFamily="@font/rubik_regular"/>
+
+            <TextView
+                android:text="Authors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingTop="16dp"
+                android:fontFamily="@font/rubik_regular"/>
+
+            <TextView
+                android:text="Robin DA, Killian T"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_regular"/>
+
+            <Button
+                android:id="@+id/moreButton"
+                android:text="More"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openRickRoll"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
