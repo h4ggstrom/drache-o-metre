@@ -21,6 +21,22 @@ Drache-o-metre provides accurate and up-to-date weather forecasts based on the u
 - **OpenWeather API**: Fetches real-time weather data.
 - **GPS Integration**: Retrieves the user's current location for accurate forecasts.
 
+## App Intents
+- **Navigation Intents**: 
+  - Navigate between the three main activities: Current Weather, Detailed Weather, and Settings.
+- **Broadcast Intents**:
+  - Handle location updates and weather data refresh in the background.
+
+## Background Services and Threads
+- **GPS Background Service**:
+  - Continuously tracks the user's location even when the app is minimized, ensuring weather data remains relevant.
+- **Worker Threads**:
+  - Fetch weather data asynchronously from the OpenWeather API to ensure a smooth user experience without blocking the main thread.
+
+## Sensors Used
+- **GPS Sensor**:
+  - Utilized to determine the user's current location for accurate weather forecasts.
+
 ## Installation
 1. Clone the repository:
    ```bash
