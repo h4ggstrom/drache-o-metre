@@ -32,8 +32,6 @@ Drache-o-metre provides accurate and up-to-date weather forecasts based on the u
   - Periodically prompts the user to check the weather for their current location.
 - **GPS Background Service**:
   - Continuously tracks the user's location even when the app is minimized, ensuring weather data remains relevant.
-- **Worker Threads**:
-  - Recieving weather data asynchronously from the OpenWeather API to ensure a smooth user experience without blocking the main thread.
 
 ## Sensors Used
 - **GPS Sensor**:
